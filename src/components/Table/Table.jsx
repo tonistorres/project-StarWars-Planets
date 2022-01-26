@@ -1,14 +1,28 @@
+// Contribuição:Hugo Daniel
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import ContextGlobal from '../../context/ContextGlobal';
 
 function Tabela() {
-  const { filterName, data } = useContext(ContextGlobal);
+  const { filterName, data, valuesFilter } = useContext(ContextGlobal);
   let arrayPlanets = data;
 
   if (filterName !== '') {
     arrayPlanets = data.filter((value) => value.name
       .toLowerCase().includes(filterName.toLowerCase()));
+  }
+
+  if (valuesFilter.length > 0) {
+    if (valuesFilter[1] === 'maior que') {
+      arrayPlanets = arrayPlanets
+        .filter((values) => Number(values[valuesFilter[0]]) > Number(valuesFilter[2]));
+    } if (valuesFilter[1] === 'menor que') {
+      arrayPlanets = arrayPlanets
+        .filter((values) => Number(values[valuesFilter[0]]) < Number(valuesFilter[2]));
+    } if (valuesFilter[1] === 'igual a') {
+      arrayPlanets = arrayPlanets
+        .filter((values) => Number(values[valuesFilter[0]]) === Number(valuesFilter[2]));
+    }
   }
 
   if (arrayPlanets.length === 0) {
