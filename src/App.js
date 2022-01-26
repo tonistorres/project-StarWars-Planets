@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
+import Tabela from './components/Table/Table';
+import ProviderContextGlobal from './context/ProviderContextGlobal';
 
 function App() {
   return (
-  // o Provider deve de encapsular os componentes aqui
-    <span>Hello, App!</span>
+    <ProviderContextGlobal>
+      <Tabela />
+    </ProviderContextGlobal>
   );
 }
 
