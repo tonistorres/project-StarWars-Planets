@@ -1,24 +1,21 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import ContextGlobal from '../../context/ContextGlobal';
 
-const dropDownColumn = [
-  'population',
-  'orbital_period',
-  'diameter',
-  'rotation_period',
-  'surface_water'];
-
-const dropDownValue = ['maior que', 'menor que', 'igual a'];
-
 function FilterInputs() {
-  // criando estados locais
-  const [dropColumn, setDropColumn] = useState('population');
-  const [dropValue, setDropValue] = useState('maior que');
-  const [numberValue, setNumberValue] = useState(0);
-
   // capturando do Provider a função que modifica o estado
   // setFilterName e a função setValuesFilter
-  const { setFilterName, setValuesFilter } = useContext(ContextGlobal);
+  const {
+    setFilterName,
+    setValuesFilter,
+    dropDownColumn,
+    dropDownValue,
+    dropValue,
+    setDropValue,
+    numberValue,
+    setNumberValue,
+    dropColumn,
+    setDropColumn,
+  } = useContext(ContextGlobal);
 
   // setando valor digitado no input e guardando estado global
   const handleInput = ({ target }) => {
@@ -29,6 +26,12 @@ function FilterInputs() {
     document.querySelector('#name').value = '';
     setFilterName('');
     setValuesFilter([dropColumn, dropValue, numberValue]);
+
+    for (let i = 0; i < dropDownColumn.length; i += 1) {
+      if (dropDownColumn[i] === dropColumn) {
+        dropDownColumn.splice(i, 1);
+      }
+    }
   };
 
   return (

@@ -8,6 +8,22 @@ function ProviderContextGlobal({ children }) {
   const [data, setData] = useState([]);
   const [filterName, setFilterName] = useState('');
   const [valuesFilter, setValuesFilter] = useState([]);
+  const [dropDownColumn, setDropDownColumn] = useState([
+    'population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
+  ]);
+
+  const [dropDownValue, setDropDownValue] = useState([
+    'maior que',
+    'menor que',
+    'igual a']);
+
+  const [dropColumn, setDropColumn] = useState('population');
+  const [dropValue, setDropValue] = useState('maior que');
+  const [numberValue, setNumberValue] = useState(0);
 
   // Usando useEffect com comportamento de componentDidMount
   // para fazer requisição a API
@@ -31,6 +47,16 @@ function ProviderContextGlobal({ children }) {
         setFilterName,
         valuesFilter,
         setValuesFilter,
+        dropDownColumn,
+        setDropDownColumn,
+        dropDownValue,
+        setDropDownValue,
+        dropColumn,
+        setDropColumn,
+        dropValue,
+        setDropValue,
+        numberValue,
+        setNumberValue,
       } }
     >
       {children}
