@@ -3,9 +3,15 @@ import React, { useContext } from 'react';
 import ContextGlobal from '../../context/ContextGlobal';
 
 function Tabela() {
-  const data = useContext(ContextGlobal);
+  const { filterName, data } = useContext(ContextGlobal);
+  let arrayPlanets = data;
 
-  if (data.length === 0) {
+  if (filterName !== '') {
+    arrayPlanets = data.filter((value) => value.name
+      .toLowerCase().includes(filterName.toLowerCase()));
+  }
+
+  if (arrayPlanets.length === 0) {
     return <h1>Loading ...</h1>;
   }
 
@@ -30,7 +36,7 @@ function Tabela() {
       </thead>
       <tbody>
 
-        {data.map((item, index) => (
+        {arrayPlanets.map((item, index) => (
           <tr key={ index }>
             <td>{item.name}</td>
             <td>{item.rotation_period}</td>

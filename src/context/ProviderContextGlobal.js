@@ -5,6 +5,8 @@ import ContextGlobal from './ContextGlobal';
 
 function ProviderContextGlobal({ children }) {
   const [data, setData] = useState([]);
+  // criado um estado global para name a ser digitado no input
+  const [filterName, setFilterName] = useState('');
 
   useEffect(() => {
     async function searchAPI() {
@@ -15,7 +17,7 @@ function ProviderContextGlobal({ children }) {
   }, []);
 
   return (
-    <ContextGlobal.Provider value={ data }>
+    <ContextGlobal.Provider value={ { setFilterName, data, filterName } }>
       {children}
     </ContextGlobal.Provider>
   );
