@@ -4,12 +4,13 @@ import { fetchPlanetsData } from '../service/ConsumerAPI';
 import ContextGlobal from './ContextGlobal';
 
 function ProviderContextGlobal({ children }) {
+  // criando estados globais da aplicação
   const [data, setData] = useState([]);
-  // criado um estado global para name a ser digitado no input
   const [filterName, setFilterName] = useState('');
-  // criando estado global capturar valores dos inputs FilterInput
   const [valuesFilter, setValuesFilter] = useState([]);
 
+  // Usando useEffect com comportamento de componentDidMount
+  // para fazer requisição a API
   useEffect(() => {
     async function searchAPI() {
       const dataAPI = await fetchPlanetsData();
@@ -17,6 +18,10 @@ function ProviderContextGlobal({ children }) {
     }
     searchAPI();
   }, []);
+
+  // console.log('Dados vindo API:', data);
+  // console.log('Nome Filtrado Input Filter:', filterName);
+  // console.log('Valores guardados dos Filtros', valuesFilter);
 
   return (
     <ContextGlobal.Provider

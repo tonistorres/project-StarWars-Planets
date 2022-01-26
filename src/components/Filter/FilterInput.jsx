@@ -26,12 +26,15 @@ function FilterInputs() {
   };
 
   const handleClickValue = () => {
+    document.querySelector('#name').value = '';
+    setFilterName('');
     setValuesFilter([dropColumn, dropValue, numberValue]);
   };
 
   return (
     <div>
       <input
+        id="name"
         type="text"
         name="name"
         data-testid="name-filter"

@@ -1,4 +1,8 @@
-// Contribuição:Hugo Daniel
+// ************************** ***/
+// Contribuição:Hugo Daniel     /
+//  ****************************
+// Implementação:Tonis Torres /
+// ************************* */
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import ContextGlobal from '../../context/ContextGlobal';
